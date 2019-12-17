@@ -18,7 +18,7 @@
         <!--</commentGenerator>-->
 
         <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@xx:1521:ORCL"
+                        connectionURL="jdbc:oracle:thin:@xx:ORCL"
                         userId="xx" password="xx">
         </jdbcConnection>
         <javaTypeResolver>

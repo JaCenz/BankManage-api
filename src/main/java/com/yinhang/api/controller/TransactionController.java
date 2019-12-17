@@ -10,6 +10,7 @@ import com.yinhang.api.vo.TransactionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,7 +54,15 @@ public class TransactionController {
         List<Transaction> transactions = transactionService.getTransaction(username);
         if(transactions == null)
             return ResultGenerator.fail("无存取款历史操作");
-        return ResultGenerator.success(transactions,"success");
+
+        List<TransactionVO> transactionVOS = new ArrayList<>();
+        TransactionVO transactionVO;
+        for(Transaction transaction : transactions){
+            Card card = cardService.getCard(transaction.getCardNumber());
+            transactionVO = TransactionVO.fromCardTransactionToThis(card,transaction);
+            transactionVOS.add(transactionVO);
+        }
+        return ResultGenerator.success(transactionVOS,"success");
     }
 
     @GetMapping("")
