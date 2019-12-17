@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动路径 -->
+    <classPathEntry
+            location="D:\Tools\Plugins\odbc\ojdbc6.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="&quot;"/>
+        <property name="endingDelimiter" value="&quot;"/>
+
+        <!--<commentGenerator>-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@xx:1521:ORCL"
+                        userId="xx" password="xx">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--域模型层,生成的目标包,项目目标源文件 -->
+        <javaModelGenerator targetPackage="com.yinhang.api.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--XML映射文件,生成的位置（目标包）,源代码文件夹 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--XML对应的Mapper类 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.yinhang.api.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--下面是数据库表名和项目中需要生成类的名称，建议和数据库保持一致，如果有多个表，添加多个节点即可 -->
+
+        <!--<table schema="" tableName="YU_USER" domainObjectName="User"></table>-->
+        <!--<table schema="" tableName="YU_CARD" domainObjectName="Card"></table>-->
+        <!--<table schema="" tableName="YU_LOAN" domainObjectName="Loan"></table>-->
+        <!--<table schema="" tableName="YU_TRANSACTION" domainObjectName="Transaction"></table>-->
+        <table schema="" tableName="LOGTABLE" domainObjectName="LogTable"></table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,227 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : myOracle
+ Source Server Type    : Oracle
+ Source Server Version : 110200
+ Source Host           : 212.64.61.8:1521
+ Source Schema         : TEST3
+
+ Target Server Type    : Oracle
+ Target Server Version : 110200
+ File Encoding         : 65001
+
+ Date: 16/12/2019 22:19:12
+*/
+
+
+-- ----------------------------
+-- Table structure for LOGTABLE
+-- ----------------------------
+DROP TABLE "TEST3"."LOGTABLE";
+CREATE TABLE "TEST3"."LOGTABLE" (
+  "LOG_DATE" DATE ,
+  "ACTION" VARCHAR2(50 BYTE) 
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of LOGTABLE
+-- ----------------------------
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-16 20:06:52', 'SYYYY-MM-DD HH24:MI:SS'), 'Insert');
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-15 22:42:41', 'SYYYY-MM-DD HH24:MI:SS'), 'Insert');
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-15 22:42:54', 'SYYYY-MM-DD HH24:MI:SS'), 'Delete');
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-16 21:49:01', 'SYYYY-MM-DD HH24:MI:SS'), 'Insert');
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-16 21:49:33', 'SYYYY-MM-DD HH24:MI:SS'), 'Insert');
+INSERT INTO "TEST3"."LOGTABLE" VALUES (TO_DATE('2019-12-16 21:49:41', 'SYYYY-MM-DD HH24:MI:SS'), 'Insert');
+
+-- ----------------------------
+-- Table structure for YU_CARD
+-- ----------------------------
+DROP TABLE "TEST3"."YU_CARD";
+CREATE TABLE "TEST3"."YU_CARD" (
+  "USERNAME" VARCHAR2(255 BYTE) ,
+  "CARD_NUMBER" VARCHAR2(30 BYTE) ,
+  "PASSWORD" VARCHAR2(30 BYTE) ,
+  "ID" VARCHAR2(255 BYTE) NOT NULL ,
+  "CARD_BALANCE" NUMBER(8,2) 
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of YU_CARD
+-- ----------------------------
+INSERT INTO "TEST3"."YU_CARD" VALUES ('jacen', '121645646', '12345', '5a65dc309f7a86609f265c283fb14a49', '4000');
+INSERT INTO "TEST3"."YU_CARD" VALUES ('jacen', '2131231231', '123', '12sadqw12', '500');
+
+-- ----------------------------
+-- Table structure for YU_LOAN
+-- ----------------------------
+DROP TABLE "TEST3"."YU_LOAN";
+CREATE TABLE "TEST3"."YU_LOAN" (
+  "USERNAME" VARCHAR2(255 BYTE) ,
+  "CARD_NUMBER" VARCHAR2(30 BYTE) ,
+  "AMOUNT" NUMBER(11,2) ,
+  "CREATE_TIME" TIMESTAMP(6) ,
+  "ID" VARCHAR2(255 BYTE) NOT NULL 
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of YU_LOAN
+-- ----------------------------
+INSERT INTO "TEST3"."YU_LOAN" VALUES ('jacen', '121645646', '120.5', TO_TIMESTAMP('2019-12-16 20:09:30.082000', 'SYYYY-MM-DD HH24:MI:SS:FF6'), 'e3cd891d9b60611d733c2b2b46fd608c');
+
+-- ----------------------------
+-- Table structure for YU_TRANSACTION
+-- ----------------------------
+DROP TABLE "TEST3"."YU_TRANSACTION";
+CREATE TABLE "TEST3"."YU_TRANSACTION" (
+  "USERNAME" VARCHAR2(255 BYTE) ,
+  "CARD_NUMBER" VARCHAR2(30 BYTE) ,
+  "AMOUNT" NUMBER(11,2) ,
+  "TYPE" NUMBER(8) ,
+  "CREATE_TIME" TIMESTAMP(6) ,
+  "ID" VARCHAR2(255 BYTE) NOT NULL 
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of YU_TRANSACTION
+-- ----------------------------
+INSERT INTO "TEST3"."YU_TRANSACTION" VALUES ('jacen', '121645646', '1000', '0', TO_TIMESTAMP('2019-12-16 20:06:53.149000', 'SYYYY-MM-DD HH24:MI:SS:FF6'), 'c3ac9b18ae7cc3c648f11ca0ae9ee260');
+INSERT INTO "TEST3"."YU_TRANSACTION" VALUES ('jacen', '121645646', '5000', '0', TO_TIMESTAMP('2019-12-16 21:49:41.886000', 'SYYYY-MM-DD HH24:MI:SS:FF6'), 'fbf6d1cf4d4d510251fbacccba2c1432');
+INSERT INTO "TEST3"."YU_TRANSACTION" VALUES ('jacen', '121645646', '1000', '0', TO_TIMESTAMP('2019-12-16 21:49:00.996000', 'SYYYY-MM-DD HH24:MI:SS:FF6'), '6af5695cfe5ce03bb2aa60fa633bd5f7');
+INSERT INTO "TEST3"."YU_TRANSACTION" VALUES ('jacen', '121645646', '3000', '1', TO_TIMESTAMP('2019-12-16 21:49:33.344000', 'SYYYY-MM-DD HH24:MI:SS:FF6'), '81cac23079773d0d76a9d608514f7798');
+
+-- ----------------------------
+-- Table structure for YU_USER
+-- ----------------------------
+DROP TABLE "TEST3"."YU_USER";
+CREATE TABLE "TEST3"."YU_USER" (
+  "USERNAME" VARCHAR2(255 BYTE) ,
+  "PASSWORD" VARCHAR2(255 BYTE) ,
+  "ID" VARCHAR2(255 BYTE) NOT NULL 
+)
+TABLESPACE "USERS"
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of YU_USER
+-- ----------------------------
+INSERT INTO "TEST3"."YU_USER" VALUES ('jacen', '123', '12sad211');
+
+-- ----------------------------
+-- Primary Key structure for table YU_CARD
+-- ----------------------------
+ALTER TABLE "TEST3"."YU_CARD" ADD CONSTRAINT "SYS_C0011592" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Primary Key structure for table YU_LOAN
+-- ----------------------------
+ALTER TABLE "TEST3"."YU_LOAN" ADD CONSTRAINT "SYS_C0011593" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Primary Key structure for table YU_TRANSACTION
+-- ----------------------------
+ALTER TABLE "TEST3"."YU_TRANSACTION" ADD CONSTRAINT "SYS_C0011596" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Triggers structure for table YU_TRANSACTION
+-- ----------------------------
+CREATE TRIGGER "TEST3"."LOGUPDATETRIGGER" AFTER DELETE OR INSERT OR UPDATE ON "TEST3"."YU_TRANSACTION" REFERENCING OLD AS "OLD" NEW AS "NEW" 
+DECLARE log_action VARCHAR2(50);
+BEGIN 
+IF INSERTING THEN log_action := 'Insert'; 
+ELSIF UPDATING THEN log_action := 'Update'; 
+ELSIF DELETING THEN log_action := 'Delete'; 
+ELSE DBMS_OUTPUT.PUT_LINE(' ..'); 
+END IF; 
+INSERT INTO TEST3.LOGTABLE (log_date, action) 
+VALUES (SYSDATE, log_action);
+END;
+/
+
+-- ----------------------------
+-- Primary Key structure for table YU_USER
+-- ----------------------------
+ALTER TABLE "TEST3"."YU_USER" ADD CONSTRAINT "SYS_C0011595" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table YU_USER
+-- ----------------------------
+ALTER TABLE "TEST3"."YU_USER" ADD CONSTRAINT "SYS_C0011594" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
