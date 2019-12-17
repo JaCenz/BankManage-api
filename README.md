@@ -3,6 +3,7 @@ Springboot+Mybatis+Oracle+Mybatis-generator搭建的银行管理HelloWorld项目
 
 
 ## 项目使用步骤
+### 注意ORACLE数据库表名，字段名使用大写。我虽然在generatorConfig2.xml中配置了关键字加引号但是并不能起作用，所以数据库全部使用大写。
 * 下载项目到本地
 * 将/src/main/rescources/config/ojdbc6.jar 拷贝到本地任何一个文件夹中
 * 打开cmd运行命令 mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar -Dfile=拷贝路径\ojdbc6.jar
