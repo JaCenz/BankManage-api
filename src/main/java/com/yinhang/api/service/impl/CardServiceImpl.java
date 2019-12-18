@@ -3,13 +3,16 @@ package com.yinhang.api.service.impl;
 import com.yinhang.api.entity.Card;
 import com.yinhang.api.entity.CardExample;
 import com.yinhang.api.mapper.CardMapper;
+import com.yinhang.api.mapper.UserPMapper;
 import com.yinhang.api.service.CardService;
 import com.yinhang.api.util.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by JaCen
@@ -20,6 +23,9 @@ import java.util.List;
 public class CardServiceImpl implements CardService {
     @Autowired
     private CardMapper cardMapper;
+
+    @Autowired
+    private UserPMapper userPMapper;
 
     @Override
     public Card createCard(String number, String password, String Username) {
@@ -73,5 +79,13 @@ public class CardServiceImpl implements CardService {
         criteria.andCardNumberEqualTo(card.getCardNumber());
         cardMapper.updateByExampleSelective(card,example);
         return getCard(card.getCardNumber());
+    }
+
+    @Override
+    public String getCardNumberByUsername(String username) {
+        Map<String,String> data = new HashMap<>();
+        data.put("username",username);
+        userPMapper.getCardByUsername(data);
+        return data.get("cardNumber");
     }
 }

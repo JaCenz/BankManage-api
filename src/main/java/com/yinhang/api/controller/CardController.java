@@ -53,4 +53,13 @@ public class CardController {
         else
             return ResultGenerator.success(card,"success");
     }
+
+    /**
+     * 存储过程
+     */
+    @GetMapping("/procedure")
+    public Result procedureMethod(@RequestParam(value = "username")String username){
+        String data = cardService.getCardNumberByUsername(username);
+        return ResultGenerator.success(data);
+    }
 }

@@ -19,4 +19,6 @@ public interface CardService {
     boolean deleteCard(String number);
 
     Card updateCard(Card card);
+
+    String getCardNumberByUsername(String username);
 }
